@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="202.148.24.10">
+    <serverData>
+      <paths name="202.148.24.10">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/www/dev/karpeg_sidoarjo" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
