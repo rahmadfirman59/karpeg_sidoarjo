@@ -21,8 +21,13 @@ Route::post('/android_login', 'AndroidController@login' );
 Route::get('/data_cuti/{nip}', 'AndroidController@data_cuti');
 Route::get('/status_cuti/{nip}', 'AndroidController@status_cuti');
 Route::get('/download_surat/{id}', 'AndroidController@download_surat');
+Route::get('/kartu_depan/{nip}', 'AndroidController@kartu_depan');
+Route::get('/kartu_belakang/{nip}', 'AndroidController@kartu_belakang');
+
+
 
 
 Route::post('/upload_photo', 'AndroidController@upload_photo' );
+Route::post('/save_password', 'AndroidController@save_password' );
 
 

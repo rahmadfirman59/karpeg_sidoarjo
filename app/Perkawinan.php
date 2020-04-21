@@ -9,7 +9,7 @@ class Perkawinan extends Model
     //
     protected $table = "perkawinan";
 
-    protected $fillable = ['nip','jabatan','unit_kerja','tempat_lahir','agama','status','alamat',
+    protected $fillable = ['nip','nama','jabatan','unit_kerja','tempat_lahir','tanggal_lahir','agama','status','alamat',
         'hari','tanggal','tempat','calon_nama','calon_pekerjaan','calon_tempat_lahir',
         'calon_tanggal_lahir','calon_status','calon_alamat','bapak_nama','bapak_tempat_lahir','bapak_tanggal_lahir',
         'bapak_pekerjaan','bapak_agama','bapak_alamat','ibu_nama','ibu_tempat_lahir','ibu_tanggal_lahir',

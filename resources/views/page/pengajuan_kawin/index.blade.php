@@ -17,17 +17,32 @@
                         <li class="breadcrumb-item"><a href="{{url('/dashboard')}}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Pengajuan Perkawinan</li>
                     </ol>
-                    <div class="card mb-5">
-                        <div class="card-body">
-                            <h3>Pencarian</h3>
-                            <form action="{{url('/pegawai/search')}}" method="GET">
-                                <input type="text" name="nip" placeholder="Masukkan NIP" value="{{ old('nip') }}">
-                                <input type="submit" value="CARI">
-                            </form>
+                    {{--<div class="card mb-5">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<h3>Pencarian</h3>--}}
+                            {{--<form action="{{url('/pegawai/search')}}" method="GET">--}}
+                                {{--<input type="text" name="nip" placeholder="Masukkan NIP" value="{{ old('nip') }}">--}}
+                                {{--<input type="submit" value="CARI">--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    <div class="row">
+                        <div class="col-md-10">
+
+                        </div>
+                        <div class="col-md-2">
+                            <a href="{{ url('/pengajuan_perkawinan/new') }}">
+                                <button  class="btn btn-primary" > Cetak Depan</button>
+                            </a>
+{{--                            <button  href="{{ url('/tambah_perkawinan') }}" class="btn btn-dark pull-right">Tambah Data</button>--}}
                         </div>
                     </div>
+                    <br>
+
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-table mr-1"></i>Data Pengajuan</div>
+                        <div class="card-header">
+                            <i class="fas fa-table mr-1"></i>Data Pengajuan
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -35,8 +50,8 @@
                                     <tr>
                                         <th>NIP</th>
                                         <th>Nama</th>
-                                        {{--<th>Office</th>--}}
-                                        {{--<th>Age</th>--}}
+                                        <th>Status</th>
+                                        <th></th>
                                         {{--<th>Start date</th>--}}
                                         {{--<th>Salary</th>--}}
                                     </tr>
@@ -46,8 +61,13 @@
                                         <tr>
                                             <td>{{$value->nip}}</td>
                                             <td>{{$value->nama}}</td>
-                                            {{--<td>Edinburgh</td>--}}
-                                            {{--<td>61</td>--}}
+                                            <td>
+                                                {{$value->status_pengajuan}}
+                                            </td>
+                                            <td>
+                                                <a href="{{ url('/pengajuan_perkawinan/'.$value->id) }}">
+                                                    Edit</a>
+                                            </td>
                                             {{--<td>2011/04/25</td>--}}
                                             {{--<td>$320,800</td>--}}
                                         </tr>

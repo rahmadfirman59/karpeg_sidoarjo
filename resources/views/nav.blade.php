@@ -16,7 +16,6 @@
             </a>
             <a class="nav-link" href="{{url('/pengajuan_perkawinan')}}"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Pengajuan Perkawinan</a>
-
         </div>
     </div>
     <div class="sb-sidenav-footer">

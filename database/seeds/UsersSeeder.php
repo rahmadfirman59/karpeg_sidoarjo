@@ -19,8 +19,11 @@ class UsersSeeder extends Seeder
             ->get();
 
         foreach ($data as $key => $value){
+
+            $pecah = substr($value->Nip,0,5);
+
             DB::table('users')
-                ->insert(['username'=>$value->Nip,'password'=>encrypt($value->Nip)]);
+                ->insert(['username'=>$value->Nip,'password'=>encrypt($pecah)]);
         }
 
     }

@@ -27,19 +27,29 @@
                     <br/>
                     <input type="file" id="upload">
                     <br/>
-                    <button class="btn btn-success upload-result">Upload Image</button>
+                    <button class="btn btn-primary upload-result">Upload Image</button>
+
+                    <a href="{{url()->previous()}}">
+                        <button class="btn btn-info" >Kembali</button>
+                    </a>
+
                 </div>
 
-                {{--<div class="col-md-4" style="">--}}
-                    {{--<div id="upload-demo-i" style="background:#e1e1e1;width:300px;padding:30px;height:300px;margin-top:30px"></div>--}}
-                {{--</div>--}}
             </div>
 
         </div>
     </div>
 </div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 <script type="text/javascript">
+    function goBack() {
+
+    }
 
     $.ajaxSetup({
         headers: {
@@ -105,15 +115,15 @@
                 url: "{{url('/cetak_kartu/save_upload/')}}",
                 type: "post",
                 data: {"image":resp,"nip":nip },
-                {{--success: function (data) {--}}
-                    {{--if (data == 'ubah'){--}}
-                        {{--alert('Data berhasil di ubah')--}}
-                        {{--location.href = "{{url('/cetak_kartu')}}"--}}
-                    {{--} else {--}}
-                        {{--alert('Foto Berhasil diubah');--}}
-                        {{--location.href = "{{url('/cetak_kartu')}}"--}}
-                    {{--}--}}
-                {{--}--}}
+                success: function (data) {
+                    if (data == 'ubah'){
+                        alert('Data berhasil di ubah')
+                        location.href = "{{url('/cetak_kartu')}}"
+                    } else {
+                        alert('Foto Berhasil diubah');
+                        location.href = "{{url('/cetak_kartu')}}"
+                    }
+                }
             });
         });
     });

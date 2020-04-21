@@ -6,6 +6,7 @@ use App\Repositories\Repository\AppRepository;
 use App\Repositories\Interfaces\AppRepositoryInterfaces;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class AppController extends Controller
@@ -61,10 +62,30 @@ class AppController extends Controller
     }
 
 
+    public function ubah_password(){
+        $data = Session::get('useractive');
+//        $nip = $data->username;
+
+        return view('ubah_password')
+            ->with('data',$data);
+    }
+
+
+    public function save_password(Request $request){
+        $data = $this->appRepository->save_password($request);
+
+        return redirect('/dashboard')
+            ->with('message_title',$data)
+            ->with('message_type','success')
+            ->with('message','Password Berhasil diganti , silahkan login kembali ');
+    }
+
+    public function pegawai($nip){
+        $data = $this->appRepository->cari_pegawai($nip);
+        return response()->json($data);
+    }
 
     public function logout(){
-
-
         Session::forget('useractive');
         return redirect('login')
             ->with('message_title','Logout Berhasil!!!')

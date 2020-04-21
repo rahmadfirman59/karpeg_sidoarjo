@@ -7,13 +7,10 @@
 <script type="text/javascript" src="{{url('public/assets_new/js/JsBarcode.all.js') }}"></script>
 <script type="text/javascript" src="{{url('public/assets_new/js/html2canvas.min.js') }}"></script>
 
-
 <style>
 </style>
 <div id="kartubelakang" style="width: max-content;">
     <input id="nip" type="hidden" value="{{$data->Nip}}">
-    <input id="token" type="hidden" value="{{csrf_token()}}">
-
     <img src="{{asset('public/background/depan.jpg')}}"
          style="width: 8.1cm;height: 12.7cm ;" alt="Cropped Image">
     <img src="data:image/png;base64,{{ chunk_split(base64_encode($data->photo)) }}"
@@ -41,30 +38,12 @@
         imgBar.src = $('#barCode').attr('src')
 
         screenshot();
-    });
 
+    });
 
     function screenshot(){
         html2canvas(document.getElementById('kartubelakang')).then(function(canvas) {
-            var image = canvas.toDataURL('image/png')
-            var nip  = document.getElementById('nip').value;
-            var token  = document.getElementById('token').value;
-
-            $.ajax({
-                url: "{{url('/cetak_kartu/save_gambar_depan/')}}",
-                type: "post",
-                data: { "_token":token,
-                        "image":image,
-                        "nip":nip },
-                success: function (data) {
-                    // console.log(data);
-                    // if (data == 'sukses'){
-                    //     alert('Berhasil')
-                    // } else {
-                    //     alert('Gagal');
-                    // }
-                }
-            });
+            var a = canvas.toDataURL('image/png')
         });
     }
 

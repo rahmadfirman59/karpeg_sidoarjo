@@ -43,11 +43,8 @@ class CetakKartuRepository implements CetakKartuRepositoryInterfaces
         $data = base64_decode($image_array_2[1]);
         $imageName = $request->nip . '.png';
         file_put_contents($tujuaan_upload.'/'.$imageName, $data);
-
-
         $save = Foto::find($request->nip);
         $data = file_get_contents($tujuaan_upload.'/'.$imageName);
-
 
 
         if ($save)
@@ -84,5 +81,29 @@ class CetakKartuRepository implements CetakKartuRepositoryInterfaces
     public function cetak_belakang($nip){
         return $nip;
     }
+
+    public function simpan_gambar_depan($request){
+
+        $data = DB::table('mst_foto')
+            ->where('Nip','=',$request->nip)
+            ->update(['gambar_depan'=>$request->image]);
+        if ($data) {
+            return 'ok';
+        }
+    }
+
+    public function simpan_gambar_belakang($request){
+        $data = DB::table('mst_foto')
+            ->where('Nip','=',$request->nip)
+            ->update(['gambar_belakang'=>$request->image]);
+        if ($data) {
+            return 'ok';
+        }
+    }
+
+
+
+
+
 
 }
